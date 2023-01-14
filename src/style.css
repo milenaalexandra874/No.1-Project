@@ -1,0 +1,23 @@
+.card{
+   height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E5E8E8;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+.container{
+    padding-left: 20px;
+    padding-top: 20px;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    margin: 0;
+    background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);;
+    font-family: 'Playfair Display', serif;
+}
