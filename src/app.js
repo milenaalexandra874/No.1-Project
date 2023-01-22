@@ -1,13 +1,10 @@
 let weather={
 "apiKey":"62282d631020ae75d9cd9f9ee3a78a2e"
-fetchWeather: function (city){
-    fetch("https://api.openweathermap.org/data/2.5/weather?q="
-    +city
-    "&units=metric&appid="
-    +this.apiKey
-    )
-.then((responce)=>responce.json());
-.then((data)=> this.displayWeather(data));
+fetchTemperature: function (city){
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=+city &units=metric&appid=+this.apiKey);
+.then((responce)=>responce.json())
+.then((data)=> this.displayWeather(data))
+}
 }
 displayWeather: function(data){
     const{name} = data;
@@ -18,4 +15,4 @@ displayWeather: function(data){
     document.querySelector(".city").innerText="+ name";
     document.querySelector("+icons").src=""
 }
-}
+
