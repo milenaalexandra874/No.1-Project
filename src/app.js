@@ -36,14 +36,49 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  iconElement.setAttribute("title", response.data.weather[0].description);
+  tempElement.innerHTML = math.round(response.data.main.temp);
+
+getFortcast(response.data.coord);
 }
 function search(city) {
-let apiKey = "2282d631020ae75d9cd9f9ee3a78a2e";
-let apiUrl = "https://api.shecodes.io/weather/v1/current?query={New Jersey}&key={apiKey}&units=metric";
-  
+let apiUrl =
+  "https://api.shecodes.io/weather/v1/current?query={city}&key={c4bta66aea564d54oe4a3a79c0a4f28c}&units=metric";
+
  axios.get(apiUrl).then(displayTemperature);
 }
 
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+   
+axios.get('/api/xyz/abcd')
+  .catch(function (error) {
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      console.log(error.request);
+    } else {
+      console.log('Error', error.message);
+    }
+
+  });
+
+
+axios.interceptors.request.use(function (config) {
+    return config;
+  }, function (error) {
+    return Promise.reject(error);
+  });
+axios.interceptors.response.use(function (response) {
+    return response;
+  }, function (error) {
+    return Promise.reject(error);
+  });
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
@@ -79,3 +114,31 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("New York");
+function search(location) {
+  let searchInput = document.querySelector("#search-input");
+  searchInput.value = location;
+  searchInput.focus();
+  };
+  function displayCelsiusTemperature() {
+    let searchInput = document.querySelector("#search-input");
+    let searchResult = document.querySelector("#search-result");
+    let temperature = document.querySelector("#temperature");
+    let celsius = document.querySelector("#celsius");
+    let fahrenheit = document.querySelector("#fahrenheit");
+    let location = searchInput.value;
+    let url = "https://api.openweathermap.org/data/2.5/oncall?"
+  }
+  function displayFahrenheitTemperature() {
+    let temperature = document.querySelector("#temperature");
+    let celsius = document.querySelector("#celsius");
+    let fahrenheit = document.querySelector("#fahrenheit");
+    let location = searchInput.value;
+    let url = "https://api.openweathermap.org/data/2.5/oncall?"
+  }
+  function displayCelsiusTemperature() {
+    let temperature = document.querySelector("#temperature");
+    let celsius = document.querySelector("#celsius");
+    let fahrenheit = document.querySelector("#fahrenheit");
+    let location = searchInput.value;
+    let url = "https://api.openweathermap.org/data/2.5/oncall?"
+  }
