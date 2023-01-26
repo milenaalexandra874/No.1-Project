@@ -10,33 +10,75 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <title>Weather App</title>
 </head>
 <body>
-    <div class="container">
-   <div class="card">
-   <nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search city" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    </nav> 
-    <div class="weather">
-        <h2 class="city">
-        New York
-    </h2>
-        <h1 class="temp">12° 🌦</h1>
-        <img src=""alt= "" class= "icon"/>
-        <div class="discription"></div>
-        <div class="humidity"> Humidity: %</div>
-        <div class="wind">Wind Speed</div>
-   <a href="https://github.com/milenaalexandra874/Weather-app-1.git"> Open-Source code, by Milena Munguia</a>
+   <script>
+      function showUser(response) {
+        alert(`The user name is ${response.data.name}`);
+      }
+
+      let url = "https://jsonplaceholder.typicode.com/users/1";
+      axios.get(url).then(showUser);
+    </script>
+  <div class="container">
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <form id="search-form" class="mb-3">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="search"
+                  placeholder="Type a city.."
+                  class="form-control"
+                  id="city-input"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="btn btn-primary w-100"
+                />
+                 </div>
+            </div>
+          </form>
+          <div class="overview">
+            <h1 id="city"></h1>
+            <ul>
+              <li>Last updated: <span id="date"></span></li>
+              <li id="description"></li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col-6">
+             <div class="d-flex weather-temperature">
+  <img src="" alt="Clear" id="icon" />
+  <div>
+    <strong id="temperature"></strong
+    ><span class="units"> °C</span>
+  </div>
+</div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span> m/h</li>
+              </ul>
+            </div>
+          </div>
+          <div class="weather-forecast" id="forecast"></div>
+        </div>
+    <small>
+  <a href="https://github.com/milenaalexandra874/No.1-Project.git"> Open-Source code, by Milena Munguia</a>
+    </small>
  </div>
     </div>
-  </div>
     </div>
-   </div>
    <script src="src/app.js"></script>
 </body>
 </html>
